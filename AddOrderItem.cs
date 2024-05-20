@@ -19,7 +19,7 @@ namespace FunctionApp_Isolated_SqlBinding
         [Function("AddOrderItem")]
         [SqlOutput("[dbo].[Orders]", "SqlConnectionString")]
         public async Task<Orders> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "AddOrderItem")] HttpRequestData req)
+            [HttpTrigger(AuthorizationLevel.Function, "post", Route = "AddOrderItem")] HttpRequestData req)
         {
             _logger.LogInformation("C# HTTP trigger with SQL Output Binding function processed the request for AddOrderItem.");
 
