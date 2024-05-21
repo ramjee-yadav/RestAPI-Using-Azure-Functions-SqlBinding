@@ -1,53 +1,82 @@
-# Creating Rest API using Azure functions (Isolated Process)
-This project demonstrates a solution that creats REST API to perform CRUD operation on SQL Database.
+# Creating a REST API using Azure Functions (Isolated Process)
+
+This project demonstrates how to create a REST API to perform CRUD operations using Azure Functions and SQL Database.
 
 ## Business Objective
-This project is for learning purpose. It helps with kick start the Rest API creation using Azure serverless integration services.
+
+This project is for learning purposes. It helps you get started with creating REST APIs using Azure serverless integration services.
+
+## Prerequisites
+
+- Visual Studio Community Edition
+- Azure account with access to Azure Functions, Key Vault, Azure SQL, and APIM
+
+## Setup
+
+1. Create a new solution (Azure Function App) in Visual Studio.
+2. Create the database objects (Tables, Views, and Stored Procedures) mentioned in the DB-Sql-Scripts.
 
 ## Solution
-Create a new solution(Azure fuction app) in visual studio.
-Add required functions to the solution and write your backend logics for the same.
+
+Add required functions (e.g., GetOrderItem, AddOrderItem, etc.) to the solution and write your backend logic for each.
+
 ![Solution.jpg](Images/Solution.jpg)
+
 ## Connection
-To test it locally define the sql conenction url in the local.settings.json file.
-To test it on Azure, set this connection in Environment variables>App setting
+
+- To test locally, define the SQL connection URL in the `local.settings.json` file.
+- To test on Azure, set this connection in Environment variables > App settings.
+
 ![SqlConnectionString-LocalSettings.jpg](Images/SqlConnectionString-LocalSettings.jpg)
 
-## Test APIs locally
-Test it locally before publishing it to the cloud.
+## Test APIs Locally
+
+Test the APIs locally before publishing them to the cloud.
+
 ![test-api-at-local.jpg](Images/test-api-at-local.jpg)
 
-## Configuration required for deployment and access:
-1. Create function app from Azure portal and allow basic authentication, so that Visual studio can deploy to your function app in Azure cloud
-2. Enable system assigned managed identity for the function app created.
-3. Create a secerete in azure key vault for Azure SQL connection URL
-	a. Assign contributer role to the function app
-	b. Assign get,list secrete access policy to the function app
+## Configuration Required for Deployment and Access
 
-## Security aspects
-Make sure to protect your functions with function key.
-Allow only selected Vnet and IP address. It can be configured in function App>settings>Networking
+1. Create a Function App from the Azure portal and allow basic authentication so that Visual Studio can deploy to your Function App in the Azure cloud.
+2. Enable system-assigned managed identity for the created Function App.
+3. Create a secret in Azure Key Vault for the Azure SQL connection URL.
+   - Assign the Contributor role to the Function App.
+   - Assign Get and List secret access policies to the Function App.
 
-## Pulish to Azure Cloud
-Once tested locally, code can be puashed to the cloud.
-Select you azure account, subscription and function app to create publish profile.
-Push the code after creating publish profile.
+## Security Aspects
+
+- Protect your functions with function keys.
+- Allow only selected VNET and IP addresses. This can be configured in Function App > Settings > Networking.
+
+## Publish to Azure Cloud
+
+Once tested locally, the code can be pushed to the cloud.
+1. Select your Azure account, subscription, and Function App to create a publish profile.
+2. Push the code after creating the publish profile.
+
 ![PublishChangesToAzure.jpg](Images/PublishChangesToAzure.jpg)
 ![PublishPush.jpg](Images/PublishPush.jpg)
 
-## Sql Connection setting
-Define Sql Connection string in App setting (Get connection url from Key Vault)
+## SQL Connection Setting
+
+Define the SQL connection string in App settings (Get connection URL from Key Vault).
 
 ![SqlConnAppSetting.jpg](Images/SqlConnAppSetting.jpg)
 
-## Test APIs at Portal
-Test GetOrderItem
+## Test APIs at the Portal
+
+- Test `GetOrderItem`
+
 ![TestGetOrderFromAzurePortal.jpg](Images/TestGetOrderFromAzurePortal.jpg)
-Test AddOrderItem
+
+- Test `AddOrderItem`
+
 ![TestAPIAddOrderItem.jpg](Images/TestAPIAddOrderItem.jpg)
-Order Added to SQL DB
+
+- Order Added to SQL DB
+
 ![OrderAddedToSqlDb.jpg](Images/OrderAddedToSqlDb.jpg)
 
-## Conclusion and Limitation
-This project is having basic details. we can add validation and business logics as per the requirenment.
-We can create APIM end points pointing to azure function for better security and scalibility.
+## Conclusion and Limitations
+
+This project covers basic details. You can add validation and business logic as needed. For better security and scalability, you can create APIM endpoints pointing to Azure Functions. For simplicity, this example uses Azure SQL, but you can use any other SQL Database.
